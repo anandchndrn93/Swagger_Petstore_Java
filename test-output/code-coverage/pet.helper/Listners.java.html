@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Listners.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.helper</a> &gt; <span class="el_source">Listners.java</span></div><h1>Listners.java</h1><pre class="source lang-java linenums">package pet.helper;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+<span class="fc" id="L13">public class Listners implements ITestListener {</span>
+<span class="fc" id="L14">	ExtentReports extent = ExtentReport.getReport();</span>
+	ExtentTest test;
+<span class="fc" id="L16">	public static ThreadLocal&lt;ExtentTest&gt; thread = new ThreadLocal&lt;ExtentTest&gt;();</span>
+<span class="fc" id="L17">	private static Logger log = LogManager.getLogger(Listners.class.getName());</span>
+
+	@Override
+	public void onTestStart(ITestResult result) {
+//To run on start of testcase
+// on start of test start extent reporting
+<span class="fc" id="L23">		String testCaseName = getTestName(result);</span>
+<span class="fc" id="L24">		test = extent.createTest(testCaseName);</span>
+<span class="fc" id="L25">		thread.set(test);</span>
+<span class="fc" id="L26">		log.info(&quot;starting Test Case: &quot; + result.getMethod().getMethodName());</span>
+<span class="fc" id="L27">		getReporter().log(Status.INFO, &quot;starting Test Case: &quot; + result.getMethod().getMethodName());</span>
+<span class="fc" id="L28">		ITestListener.super.onTestStart(result);</span>
+<span class="fc" id="L29">	}</span>
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+// To run when a test has passed. marks the test as passed on extent report
+<span class="fc" id="L34">		getReporter().log(Status.PASS, &quot;Test Passed&quot;);</span>
+<span class="fc" id="L35">		log.debug(&quot;Test Passed&quot;);</span>
+<span class="fc" id="L36">		ITestListener.super.onTestSuccess(result);</span>
+<span class="fc" id="L37">	}</span>
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+//To run when a test has failed. marks the test as failed on extent report
+<span class="fc" id="L42">		log.fatal(result.getThrowable());</span>
+<span class="fc" id="L43">		result.getThrowable().printStackTrace();</span>
+<span class="fc" id="L44">		getReporter().log(Status.FAIL, &quot;Test Failed Abruptly&quot;);</span>
+<span class="fc" id="L45">		String methodName = result.getMethod().getMethodName();</span>
+<span class="fc" id="L46">		log.fatal(&quot;Test Failed Abruptly. Test name: &quot; + methodName);</span>
+<span class="fc" id="L47">		ITestListener.super.onTestFailure(result);</span>
+<span class="fc" id="L48">	}</span>
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+//To run when a test has skipped. marks the test as skipped on extent report
+<span class="nc" id="L53">		String testCaseName = result.getMethod().getMethodName();</span>
+<span class="nc" id="L54">		getReporter().log(Status.SKIP, &quot;Test was Skipped&quot;);</span>
+<span class="nc" id="L55">		getReporter().skip(result.getThrowable());</span>
+<span class="nc" id="L56">		log.fatal(&quot;Test was skipped!. Test name: &quot; + testCaseName);</span>
+<span class="nc" id="L57">		ITestListener.super.onTestSkipped(result);</span>
+<span class="nc" id="L58">	}</span>
+
+	@Override
+	public void onFinish(ITestContext context) {
+//To run when test has finished. flush extent report.
+
+<span class="fc" id="L64">		extent.flush();</span>
+<span class="fc" id="L65">		ITestListener.super.onFinish(context);</span>
+<span class="fc" id="L66">	}</span>
+
+	public static ExtentTest getReporter() {
+// ensure thread safety
+<span class="fc" id="L70">		return thread.get();</span>
+	}
+
+	private String getTestName(ITestResult result) {
+//method to get arguments received by each test method and update the test case name with the argument
+<span class="fc" id="L75">		Object param = &quot;&quot;;</span>
+		String testCaseName;
+
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">		if (result.getParameters().length != 0) {</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">			for (Object parameter : result.getParameters()) {</span>
+<span class="fc" id="L80">				param = parameter;</span>
+			}
+<span class="fc" id="L82">			testCaseName = result.getMethod().getMethodName() + &quot;-&quot; + param;</span>
+<span class="fc" id="L83">		} else</span>
+<span class="nc" id="L84">			testCaseName = result.getMethod().getMethodName();</span>
+<span class="fc" id="L85">		return testCaseName;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

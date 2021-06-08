@@ -43,33 +43,24 @@ public class RequestWrapper {
 		return spec;
 	}
 
-	String resolveKeys(String key) {
-//method to replace values in payloads or endpoints based on regex. 
-//Any value between "%%" and "%%" will be considered as key and will be replaced with corresponding value from getBundle Map
-		String patternString1 = "(%%)(.+?)(%%)";
-		Pattern pattern = Pattern.compile(patternString1);
-		Matcher matcher = pattern.matcher(key);
-		while (matcher.find()) {
-			String foundString = matcher.group(1) + matcher.group(2) + matcher.group(3);
-			String replaceWith = getBundle().getOrDefault(matcher.group(2), foundString);
-			key = key.replaceAll(foundString, Matcher.quoteReplacement(replaceWith));
-		}
-		return key;
-	}
-
-	public Response getRequest(String endpoint, Map<String, String> headers) {
-// get request is sent here. This method can be called from module class
-		endpoint = resolveKeys(endpoint);
-		log.debug("Performing GET on endpoint: " + endpoint);
-		Response resp = RestAssured.given().spec(requestSpecification(headers)).when().get(endpoint);
-		log.debug("Response: " + resp.asString());
-		return resp;
-	}
+//	String resolveKeys(String key) {
+////method to replace values in payloads or endpoints based on regex. 
+////Any value between "%%" and "%%" will be considered as key and will be replaced with corresponding value from getBundle Map
+//		String patternString1 = "(%%)(.+?)(%%)";
+//		Pattern pattern = Pattern.compile(patternString1);
+//		Matcher matcher = pattern.matcher(key);
+//		while (matcher.find()) {
+//			String foundString = matcher.group(1) + matcher.group(2) + matcher.group(3);
+//			String replaceWith = getBundle().getOrDefault(matcher.group(2), foundString);
+//			key = key.replaceAll(foundString, Matcher.quoteReplacement(replaceWith));
+//		}
+//		return key;
+//	}
 
 	public Response getRequestWithQueryParams(String endpoint, Map<String, String> headers,
 			Map<String, String> formParams) {
 // get request with query params is sent here. This method can be called from module class
-		endpoint = resolveKeys(endpoint);
+//		endpoint = resolveKeys(endpoint);
 		log.info("Performing GET on end point : " + endpoint);
 		Response resp = RestAssured.given().spec(requestSpecification(headers)).queryParams(formParams).when()
 				.get(endpoint);
@@ -78,35 +69,5 @@ public class RequestWrapper {
 
 	}
 
-	public Response postRequest(String endpoint, Map<String, String> headers, String payload) {
-// post request is sent here. This method can be called from module class
-		endpoint = resolveKeys(endpoint);
-		log.info("Performing POST on endpoint : " + endpoint);
-		payload = resolveKeys(payload);
-		log.debug("request : " + payload);
-		Response resp = RestAssured.given().spec(requestSpecification(headers)).body(payload).when().post(endpoint);
-		log.debug("Response: " + resp.asString());
-		return resp;
-	}
-
-	public Response putRequest(String endpoint, Map<String, String> headers, String payload) {
-// put request is sent here. This method can be called from module class
-		endpoint = resolveKeys(endpoint);
-		log.info("Performing PUT on endpoint: " + endpoint);
-		payload = resolveKeys(payload);
-		log.debug("Payload : " + payload);
-		Response resp = RestAssured.given().spec(requestSpecification(headers)).body(payload).when().put(endpoint);
-		log.debug("Response: " + resp.asString());
-		return resp;
-	}
-
-	public Response deleteRequest(String endpoint, Map<String, String> headers) {
-// delete request is sent here. This method can be called from module class
-		endpoint = resolveKeys(endpoint);
-		log.info("Performing Delete on endpoint: " + endpoint);
-		Response resp = RestAssured.given().spec(requestSpecification(headers)).when().delete(endpoint);
-		log.debug("Response: " + resp.asString());
-		return resp;
-	}
-
+//TODO add  POST, PUT, DELETE and all other necessary methods here
 }

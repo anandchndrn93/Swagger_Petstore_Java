@@ -28,7 +28,7 @@ public class FindPetsTest {
 	@Test(dataProvider = "statusProvider")
 	public void findPets(String strStatus) {
 // get all pets based on different status
-		log.info("fetching all pets in pending status");
+		log.info("fetching all pets in "+strStatus+" status");
 		Listners.getReporter().log(Status.INFO, "fetching all pets in pending status");
 		Response petResponse = pet.getPetsByStatus(strStatus); // This is the api call
 
@@ -58,14 +58,15 @@ public class FindPetsTest {
 		int intPetMatchCount = 0;
 		for (String petname : listPetNames) {
 			if (petname.equals("Lions")) {
-				String strCategoryId = petResponse.path("category[" + intPetCount + "].id");
-				String strId = petResponse.path("id[" + intPetCount + "]");
+				log.info(intPetCount);
+				int intCategoryId = petResponse.path("category[" + intPetCount + "].id");
+				int intId = petResponse.path("id[" + intPetCount + "]");
 				String strName = petResponse.path("name[" + intPetCount + "]");
 				log.info("pet found: " + petname);
-				log.info("pet category id is: " + strCategoryId);
-				log.info("pet id is: " + strId);
+				log.info("pet category id is: " + intCategoryId);
+				log.info("pet id is: " + intId);
 				log.info("pet name is: " + strName);
-				Listners.getReporter().log(Status.PASS, "pet Lion was found with name" + strName);
+				Listners.getReporter().log(Status.PASS, "pet Lion was found with name " + strName);
 				intPetMatchCount++;
 			}
 			intPetCount++;

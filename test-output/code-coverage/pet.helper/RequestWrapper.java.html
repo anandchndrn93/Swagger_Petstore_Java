@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RequestWrapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.helper</a> &gt; <span class="el_source">RequestWrapper.java</span></div><h1>RequestWrapper.java</h1><pre class="source lang-java linenums">package pet.helper;
+
+import static pet.helper.Utilities.getBundle;
+
+import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.io.IoBuilder;
+
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.config.LogConfig;
+import io.restassured.config.RestAssuredConfig;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+<span class="fc" id="L23">public class RequestWrapper {</span>
+<span class="fc" id="L24">	public static Logger log = LogManager.getLogger(RequestWrapper.class.getName());</span>
+<span class="fc" id="L25">	public static RequestSpecification spec;</span>
+
+	public RequestSpecification requestSpecification(Map&lt;String, String&gt; headers) {
+
+// method to building specifications such as base url that are common to all api requests.
+//logging the request specification to log file is also handled here
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">		if (headers == null)</span>
+<span class="fc" id="L32">			headers = new HashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L33">		headers.put(&quot;Accept&quot;, &quot;application/json&quot;);</span>
+<span class="fc" id="L34">		headers.put(&quot;content-type&quot;, &quot;application/json&quot;);</span>
+<span class="fc" id="L35">		PrintStream logStream = IoBuilder.forLogger(log).buildPrintStream();</span>
+<span class="fc" id="L36">		RestAssuredConfig restAssuredConfig = new RestAssuredConfig();</span>
+<span class="fc" id="L37">		LogConfig logConfig = restAssuredConfig.getLogConfig();</span>
+
+<span class="fc" id="L39">		logConfig.defaultStream(logStream).enablePrettyPrinting(true);</span>
+<span class="fc" id="L40">		spec = new RequestSpecBuilder().setBaseUri(getBundle().get(&quot;BASE_URI&quot;))</span>
+<span class="fc" id="L41">				.setBasePath(getBundle().get(&quot;BASE_PATH&quot;)).addFilter(RequestLoggingFilter.logRequestTo(logStream))</span>
+<span class="fc" id="L42">				.setConfig(restAssuredConfig).addHeaders(headers).build();</span>
+<span class="fc" id="L43">		return spec;</span>
+	}
+
+//	String resolveKeys(String key) {
+////method to replace values in payloads or endpoints based on regex. 
+////Any value between &quot;%%&quot; and &quot;%%&quot; will be considered as key and will be replaced with corresponding value from getBundle Map
+//		String patternString1 = &quot;(%%)(.+?)(%%)&quot;;
+//		Pattern pattern = Pattern.compile(patternString1);
+//		Matcher matcher = pattern.matcher(key);
+//		while (matcher.find()) {
+//			String foundString = matcher.group(1) + matcher.group(2) + matcher.group(3);
+//			String replaceWith = getBundle().getOrDefault(matcher.group(2), foundString);
+//			key = key.replaceAll(foundString, Matcher.quoteReplacement(replaceWith));
+//		}
+//		return key;
+//	}
+
+	public Response getRequestWithQueryParams(String endpoint, Map&lt;String, String&gt; headers,
+			Map&lt;String, String&gt; formParams) {
+// get request with query params is sent here. This method can be called from module class
+//		endpoint = resolveKeys(endpoint);
+<span class="fc" id="L64">		log.info(&quot;Performing GET on end point : &quot; + endpoint);</span>
+<span class="fc" id="L65">		Response resp = RestAssured.given().spec(requestSpecification(headers)).queryParams(formParams).when()</span>
+<span class="fc" id="L66">				.get(endpoint);</span>
+<span class="fc" id="L67">		log.debug(&quot;Response: &quot; + resp.asString());</span>
+<span class="fc" id="L68">		return resp;</span>
+
+	}
+
+//TODO add  POST, PUT, DELETE and all other necessary methods here
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
