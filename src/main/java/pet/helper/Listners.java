@@ -75,13 +75,13 @@ public class Listners implements ITestListener {
 		Object param = "";
 		String testCaseName;
 
-		if (result.getParameters().length != 0) {
-			for (Object parameter : result.getParameters()) {
-				param = parameter;
-			}
-			testCaseName = result.getMethod().getMethodName() + "-" + param;
-		} else
-			testCaseName = result.getMethod().getMethodName();
+//		if (result.getParameters().length != 0) {
+		for (Object parameter : result.getParameters()) {
+			param = parameter;
+		}
+		testCaseName = result.getMethod().getMethodName() + "-" + param;
+//		} else
+//			testCaseName = result.getMethod().getMethodName();
 		return testCaseName;
 	}
 
