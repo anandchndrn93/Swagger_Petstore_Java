@@ -45,10 +45,10 @@ import pet.modules.PetModule;
 // validating if the response time is less than 200 ms
 <span class="fc" id="L46">		long longResponseTime = petResponse.getTime();</span>
 		try {
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
-<span class="nc" id="L49">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
-<span class="nc" id="L50">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
-<span class="pc" id="L51">		} catch (AssertionError ae) {</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
+<span class="fc" id="L49">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
+<span class="fc" id="L50">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
+<span class="fc" id="L51">		} catch (AssertionError ae) {</span>
 <span class="fc" id="L52">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
 <span class="fc" id="L53">			Listners.getReporter().log(Status.FAIL,</span>
 <span class="fc" id="L54">					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);</span>
