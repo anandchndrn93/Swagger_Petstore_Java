@@ -1,3 +1,8 @@
+/**
+* @description:-Implementation for extend reports. report document specifics such as name of doc, format, report name are set here.
+* @author:-Anand Chandran
+*/
+
 package pet.helper;
 
 import java.time.LocalDateTime;
@@ -12,8 +17,8 @@ public class ExtentReport {
 	public static ExtentReports getReport() {
 		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 		LocalDateTime now = LocalDateTime.now();
-		String path = System.getProperty("user.dir") + "\\test-output\\reports\\WoogaTestReport-" + timeFormat.format(now)
-				+ ".html";
+		String path = System.getProperty("user.dir") + "\\test-output\\reports\\WoogaTestReport-"
+				+ timeFormat.format(now) + ".html";
 
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
 		reporter.config().setReportName("Swagger Petstore Results");

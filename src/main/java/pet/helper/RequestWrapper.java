@@ -1,3 +1,8 @@
+/**
+* @description:-This class is meant to handle all actions that might be common to making api calls. 
+*               Actual API call is made from this class.
+* @author:-Anand Chandran
+*/
 package pet.helper;
 
 import static pet.helper.Utilities.getBundle;
@@ -5,9 +10,6 @@ import static pet.helper.Utilities.getBundle;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.io.IoBuilder;
@@ -43,24 +45,8 @@ public class RequestWrapper {
 		return spec;
 	}
 
-//	String resolveKeys(String key) {
-////method to replace values in payloads or endpoints based on regex. 
-////Any value between "%%" and "%%" will be considered as key and will be replaced with corresponding value from getBundle Map
-//		String patternString1 = "(%%)(.+?)(%%)";
-//		Pattern pattern = Pattern.compile(patternString1);
-//		Matcher matcher = pattern.matcher(key);
-//		while (matcher.find()) {
-//			String foundString = matcher.group(1) + matcher.group(2) + matcher.group(3);
-//			String replaceWith = getBundle().getOrDefault(matcher.group(2), foundString);
-//			key = key.replaceAll(foundString, Matcher.quoteReplacement(replaceWith));
-//		}
-//		return key;
-//	}
-
 	public Response getRequestWithQueryParams(String endpoint, Map<String, String> headers,
 			Map<String, String> formParams) {
-// get request with query params is sent here. This method can be called from module class
-//		endpoint = resolveKeys(endpoint);
 		log.info("Performing GET on end point : " + endpoint);
 		Response resp = RestAssured.given().spec(requestSpecification(headers)).queryParams(formParams).when()
 				.get(endpoint);

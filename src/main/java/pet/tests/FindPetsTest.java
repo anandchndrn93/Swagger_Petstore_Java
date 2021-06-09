@@ -1,3 +1,7 @@
+/**
+* @description:-This is a test class. All validations on api response can be done here.
+* @author:-Anand Chandran
+*/
 package pet.tests;
 
 import java.util.List;
@@ -28,7 +32,7 @@ public class FindPetsTest {
 	@Test(dataProvider = "statusProvider")
 	public void findPets(String strStatus) {
 // get all pets based on different status
-		log.info("fetching all pets in "+strStatus+" status");
+		log.info("fetching all pets in " + strStatus + " status");
 		Listners.getReporter().log(Status.INFO, "fetching all pets in pending status");
 		Response petResponse = pet.getPetsByStatus(strStatus); // This is the api call
 
@@ -66,15 +70,15 @@ public class FindPetsTest {
 				log.info("pet category id is: " + intCategoryId);
 				log.info("pet id is: " + intId);
 				log.info("pet name is: " + strName);
-				Listners.getReporter().log(Status.PASS, "pet Lion was found with name " + strName);
+				Listners.getReporter().log(Status.INFO, "pet Lion was found with name " + strName);
 				intPetMatchCount++;
 			}
 			intPetCount++;
 		}
 
 		if (intPetMatchCount == 0) {
-			log.fatal("The pet name Lion was not found");
-			Listners.getReporter().log(Status.FAIL, "The pet name Lion was not found");
+			log.info("The pet name Lion was not found");
+			Listners.getReporter().log(Status.INFO, "The pet name Lion was not found");
 		}
 
 //validating the header "content-type"

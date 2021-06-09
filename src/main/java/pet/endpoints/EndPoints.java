@@ -1,3 +1,7 @@
+/**
+* @description:-This is an enum class to maintain all the endpoints needed for different apis.
+* @author:-Anand Chandran
+*/
 package pet.endpoints;
 
 public enum EndPoints {

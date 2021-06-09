@@ -1,3 +1,8 @@
+/**
+* @description:-This is class is meant for implementation of testNg Listeners, helpful in creating test report.
+*               Methods here listens to tests run and performs actions based on test status.
+* @author:-Anand Chandran
+*/
 package pet.helper;
 
 import org.apache.logging.log4j.LogManager;
@@ -75,13 +80,10 @@ public class Listners implements ITestListener {
 		Object param = "";
 		String testCaseName;
 
-//		if (result.getParameters().length != 0) {
 		for (Object parameter : result.getParameters()) {
 			param = parameter;
 		}
 		testCaseName = result.getMethod().getMethodName() + "-" + param;
-//		} else
-//			testCaseName = result.getMethod().getMethodName();
 		return testCaseName;
 	}
 
