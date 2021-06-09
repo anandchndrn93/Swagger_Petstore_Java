@@ -44,11 +44,11 @@ import pet.modules.PetModule;
 <span class="pc bpc" id="L44" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
 <span class="nc" id="L45">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
 <span class="nc" id="L46">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
-<span class="pc" id="L47">		} catch (AssertionError ae) {</span>
+<span class="fc" id="L47">		} catch (AssertionError ae) {</span>
 <span class="fc" id="L48">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
 <span class="fc" id="L49">			Listners.getReporter().log(Status.FAIL,</span>
-<span class="fc" id="L50">					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);</span>
-		}
+					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);
+<span class="nc" id="L51">		}</span>
 
 // iterating through all pets and printing the details if the pet id Lion. All pet names are fetched as a list. 
 //Then iterate through the list to find matching pet.
@@ -70,7 +70,7 @@ import pet.modules.PetModule;
 <span class="fc" id="L70">				intPetMatchCount++;</span>
 			}
 <span class="fc" id="L72">			intPetCount++;</span>
-		}
+<span class="fc" id="L73">		}</span>
 
 <span class="fc bfc" id="L75" title="All 2 branches covered.">		if (intPetMatchCount == 0) {</span>
 <span class="fc" id="L76">			log.fatal(&quot;The pet name Lion was not found&quot;);</span>

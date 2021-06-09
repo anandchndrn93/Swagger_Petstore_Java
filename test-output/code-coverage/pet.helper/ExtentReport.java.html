@@ -13,7 +13,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 <span class="fc" id="L13">		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd_HH-mm-ss&quot;);</span>
 <span class="fc" id="L14">		LocalDateTime now = LocalDateTime.now();</span>
 <span class="fc" id="L15">		String path = System.getProperty(&quot;user.dir&quot;) + &quot;\\test-output\\reports\\WoogaTestReport-&quot; + timeFormat.format(now)</span>
-<span class="fc" id="L16">				+ &quot;.html&quot;;</span>
+				+ &quot;.html&quot;;
 
 <span class="fc" id="L18">		ExtentSparkReporter reporter = new ExtentSparkReporter(path);</span>
 <span class="fc" id="L19">		reporter.config().setReportName(&quot;Swagger Petstore Results&quot;);</span>

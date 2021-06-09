@@ -46,9 +46,9 @@ public class Utilities {
 <span class="fc" id="L46">					log.info(&quot;Current file loading : &quot; + matchineFile.getAbsolutePath());</span>
 <span class="fc" id="L47">					prop.load(new FileReader(matchineFile)); // read properties file</span>
 				}
-<span class="pc" id="L49">			} catch (IOException e) {</span>
+<span class="nc" id="L49">			} catch (IOException e) {</span>
 <span class="nc" id="L50">				e.printStackTrace();</span>
-			}
+<span class="fc" id="L51">			}</span>
 		}
 <span class="fc" id="L53">		return new HashMap(prop);</span>
 	}
