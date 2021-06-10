@@ -42,16 +42,18 @@ import io.restassured.specification.RequestSpecification;
 <span class="fc" id="L42">		spec = new RequestSpecBuilder().setBaseUri(getBundle().get(&quot;BASE_URI&quot;))</span>
 <span class="fc" id="L43">				.setBasePath(getBundle().get(&quot;BASE_PATH&quot;)).addFilter(RequestLoggingFilter.logRequestTo(logStream))</span>
 <span class="fc" id="L44">				.setConfig(restAssuredConfig).addHeaders(headers).build();</span>
-<span class="fc" id="L45">		return spec;</span>
+		// BASE_URI and BASE_PATH are read from
+		// &quot;/src/main/resources/config/config.properties&quot; file
+<span class="fc" id="L47">		return spec;</span>
 	}
 
 	public Response getRequestWithQueryParams(String endpoint, Map&lt;String, String&gt; headers,
 			Map&lt;String, String&gt; formParams) {
-<span class="fc" id="L50">		log.info(&quot;Performing GET on end point : &quot; + endpoint);</span>
-<span class="fc" id="L51">		Response resp = RestAssured.given().spec(requestSpecification(headers)).queryParams(formParams).when()</span>
-<span class="fc" id="L52">				.get(endpoint);</span>
-<span class="fc" id="L53">		log.debug(&quot;Response: &quot; + resp.asString());</span>
-<span class="fc" id="L54">		return resp;</span>
+<span class="fc" id="L52">		log.info(&quot;Performing GET on end point : &quot; + endpoint);</span>
+<span class="fc" id="L53">		Response resp = RestAssured.given().spec(requestSpecification(headers)).queryParams(formParams).when()</span>
+<span class="fc" id="L54">				.get(endpoint);</span>
+<span class="fc" id="L55">		log.debug(&quot;Response: &quot; + resp.asString());</span>
+<span class="fc" id="L56">		return resp;</span>
 
 	}
 
