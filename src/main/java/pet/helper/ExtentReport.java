@@ -1,7 +1,3 @@
-/**
-* @description:-Implementation for extend reports. report document specifics such as name of doc, format, report name are set here.
-* @author:-Anand Chandran
-*/
 
 package pet.helper;
 
@@ -11,9 +7,20 @@ import java.time.format.DateTimeFormatter;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+/**
+ * Implementation for extend reports. Report document specifics such as name of
+ * doc, format, report name are set here.
+ * 
+ * @author Anand Chandran
+ */
 public class ExtentReport {
 	static ExtentReports extent;
 
+	/**
+	 * Creates a report document
+	 * 
+	 * @return Instance of ExtentReports class
+	 */
 	public static ExtentReports getReport() {
 		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 		LocalDateTime now = LocalDateTime.now();

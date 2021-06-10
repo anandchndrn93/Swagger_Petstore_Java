@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Utilities.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.helper</a> &gt; <span class="el_source">Utilities.java</span></div><h1>Utilities.java</h1><pre class="source lang-java linenums">/**
-* @description: all the required general purpose utility methods can be added here. 
-* @author:-Anand Chandran
-*/
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Utilities.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.helper</a> &gt; <span class="el_source">Utilities.java</span></div><h1>Utilities.java</h1><pre class="source lang-java linenums">
 package pet.helper;
 
 import java.io.File;
@@ -15,46 +12,63 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Utilities {
-<span class="fc" id="L19">	private static Utilities myConfig = null;</span>
+/**
+ * All the required general purpose utility methods can be added here.
+ * 
+ * @author Anand Chandran
+ */
+<span class="fc" id="L20">public class Utilities {</span>
+<span class="fc" id="L21">	private static Utilities myConfig = null;</span>
+	/**
+	 * Map to store all key value pairs from property file
+	 */
 	public static Map&lt;String, String&gt; bundle;
-<span class="fc" id="L21">	public static Logger log = LogManager.getLogger(Utilities.class.getName());</span>
+	/**
+	 * Logger object to add all logs
+	 */
+<span class="fc" id="L29">	private static  Logger log = LogManager.getLogger(Utilities.class.getName());</span>
 
-	private Utilities() {
-	}
-
+	/**
+	 * Reads all the values from properties file
+	 * 
+	 * @return Map with all the values from properties file
+	 */
 	public static Map&lt;String, String&gt; getBundle() {
-// returns a map with all the values from properties file
-<span class="fc bfc" id="L28" title="All 2 branches covered.">		if (myConfig == null) {</span>
-<span class="fc" id="L29">			myConfig = new Utilities();</span>
-<span class="fc" id="L30">			bundle = readAllConfig();</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">		if (myConfig == null) {</span>
+<span class="fc" id="L38">			myConfig = new Utilities();</span>
+<span class="fc" id="L39">			bundle = readAllConfig();</span>
 		}
-<span class="fc" id="L32">		return bundle;</span>
+<span class="fc" id="L41">		return bundle;</span>
 	}
 
+	/**
+	 * Reads all properties files from mentioned path and creates a hashmap with all
+	 * key value pairs as per the properties file
+	 * 
+	 * @return Hashmap with all the values from properties file
+	 */
 	private static Map&lt;String, String&gt; readAllConfig() {
-// reads all properties files from mentioned path and creates a hashmap with all key value pairs as per the properties file
-<span class="fc" id="L37">		String[] allFiles = { &quot;src/main/resources/config/&quot; };</span>
-<span class="fc" id="L38">		Properties prop = new Properties();</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">		for (String filePath : allFiles) {</span>
-<span class="fc" id="L40">			File file = new File(filePath);</span>
+<span class="fc" id="L51">		String[] allFiles = { &quot;src/main/resources/config/&quot; };</span>
+<span class="fc" id="L52">		Properties prop = new Properties();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		for (String filePath : allFiles) {</span>
+<span class="fc" id="L54">			File file = new File(filePath);</span>
 			// get all properties file
-<span class="fc" id="L42">			File[] matchingFiles = file.listFiles(new FilenameFilter() {</span>
+<span class="fc" id="L56">			File[] matchingFiles = file.listFiles(new FilenameFilter() {</span>
 				public boolean accept(File dir, String name) {
-<span class="fc" id="L44">					return name.endsWith(&quot;.properties&quot;);</span>
+<span class="fc" id="L58">					return name.endsWith(&quot;.properties&quot;);</span>
 				}
 			});
 
 			try {
-<span class="fc bfc" id="L49" title="All 2 branches covered.">				for (File matchineFile : matchingFiles) {</span>
-<span class="fc" id="L50">					log.info(&quot;Current file loading : &quot; + matchineFile.getAbsolutePath());</span>
-<span class="fc" id="L51">					prop.load(new FileReader(matchineFile)); // read properties file</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">				for (File matchineFile : matchingFiles) {</span>
+<span class="fc" id="L64">					log.info(&quot;Current file loading : &quot; + matchineFile.getAbsolutePath());</span>
+<span class="fc" id="L65">					prop.load(new FileReader(matchineFile)); // read properties file</span>
 				}
-<span class="pc" id="L53">			} catch (IOException e) {</span>
-<span class="nc" id="L54">				e.printStackTrace();</span>
+<span class="pc" id="L67">			} catch (IOException e) {</span>
+<span class="nc" id="L68">				e.printStackTrace();</span>
 			}
 		}
-<span class="fc" id="L57">		return new HashMap(prop);</span>
+<span class="fc" id="L71">		return new HashMap(prop);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

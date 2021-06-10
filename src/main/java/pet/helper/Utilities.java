@@ -1,7 +1,4 @@
-/**
-* @description: all the required general purpose utility methods can be added here. 
-* @author:-Anand Chandran
-*/
+
 package pet.helper;
 
 import java.io.File;
@@ -15,16 +12,28 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * All the required general purpose utility methods can be added here.
+ * 
+ * @author Anand Chandran
+ */
 public class Utilities {
 	private static Utilities myConfig = null;
+	/**
+	 * Map to store all key value pairs from property file
+	 */
 	public static Map<String, String> bundle;
-	public static Logger log = LogManager.getLogger(Utilities.class.getName());
+	/**
+	 * Logger object to add all logs
+	 */
+	private static  Logger log = LogManager.getLogger(Utilities.class.getName());
 
-	private Utilities() {
-	}
-
+	/**
+	 * Reads all the values from properties file
+	 * 
+	 * @return Map with all the values from properties file
+	 */
 	public static Map<String, String> getBundle() {
-// returns a map with all the values from properties file
 		if (myConfig == null) {
 			myConfig = new Utilities();
 			bundle = readAllConfig();
@@ -32,8 +41,13 @@ public class Utilities {
 		return bundle;
 	}
 
+	/**
+	 * Reads all properties files from mentioned path and creates a hashmap with all
+	 * key value pairs as per the properties file
+	 * 
+	 * @return Hashmap with all the values from properties file
+	 */
 	private static Map<String, String> readAllConfig() {
-// reads all properties files from mentioned path and creates a hashmap with all key value pairs as per the properties file
 		String[] allFiles = { "src/main/resources/config/" };
 		Properties prop = new Properties();
 		for (String filePath : allFiles) {

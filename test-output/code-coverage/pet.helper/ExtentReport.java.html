@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExtentReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.helper</a> &gt; <span class="el_source">ExtentReport.java</span></div><h1>ExtentReport.java</h1><pre class="source lang-java linenums">/**
-* @description:-Implementation for extend reports. report document specifics such as name of doc, format, report name are set here.
-* @author:-Anand Chandran
-*/
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExtentReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.helper</a> &gt; <span class="el_source">ExtentReport.java</span></div><h1>ExtentReport.java</h1><pre class="source lang-java linenums">
 package pet.helper;
 
 import java.time.LocalDateTime;
@@ -11,22 +7,33 @@ import java.time.format.DateTimeFormatter;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-<span class="nc" id="L14">public class ExtentReport {</span>
+/**
+ * Implementation for extend reports. Report document specifics such as name of
+ * doc, format, report name are set here.
+ * 
+ * @author Anand Chandran
+ */
+<span class="nc" id="L16">public class ExtentReport {</span>
 	static ExtentReports extent;
 
+	/**
+	 * Creates a report document
+	 * 
+	 * @return Instance of ExtentReports class
+	 */
 	public static ExtentReports getReport() {
-<span class="fc" id="L18">		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd_HH-mm-ss&quot;);</span>
-<span class="fc" id="L19">		LocalDateTime now = LocalDateTime.now();</span>
-<span class="fc" id="L20">		String path = System.getProperty(&quot;user.dir&quot;) + &quot;\\test-output\\reports\\WoogaTestReport-&quot;</span>
-<span class="fc" id="L21">				+ timeFormat.format(now) + &quot;.html&quot;;</span>
+<span class="fc" id="L25">		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd_HH-mm-ss&quot;);</span>
+<span class="fc" id="L26">		LocalDateTime now = LocalDateTime.now();</span>
+<span class="fc" id="L27">		String path = System.getProperty(&quot;user.dir&quot;) + &quot;\\test-output\\reports\\WoogaTestReport-&quot;</span>
+<span class="fc" id="L28">				+ timeFormat.format(now) + &quot;.html&quot;;</span>
 
-<span class="fc" id="L23">		ExtentSparkReporter reporter = new ExtentSparkReporter(path);</span>
-<span class="fc" id="L24">		reporter.config().setReportName(&quot;Swagger Petstore Results&quot;);</span>
-<span class="fc" id="L25">		reporter.config().setDocumentTitle(&quot;Wooga Take Home Test&quot;);</span>
+<span class="fc" id="L30">		ExtentSparkReporter reporter = new ExtentSparkReporter(path);</span>
+<span class="fc" id="L31">		reporter.config().setReportName(&quot;Swagger Petstore Results&quot;);</span>
+<span class="fc" id="L32">		reporter.config().setDocumentTitle(&quot;Wooga Take Home Test&quot;);</span>
 
-<span class="fc" id="L27">		extent = new ExtentReports();</span>
-<span class="fc" id="L28">		extent.attachReporter(reporter);</span>
-<span class="fc" id="L29">		return extent;</span>
+<span class="fc" id="L34">		extent = new ExtentReports();</span>
+<span class="fc" id="L35">		extent.attachReporter(reporter);</span>
+<span class="fc" id="L36">		return extent;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
