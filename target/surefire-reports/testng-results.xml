@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-06-10T17:36:54 UTC" name="Suite" finished-at="2021-06-10T17:36:59 UTC" duration-ms="5202">
+  <suite started-at="2021-06-10T17:42:39 UTC" name="Suite" finished-at="2021-06-10T17:42:46 UTC" duration-ms="6456">
     <groups>
     </groups>
-    <test started-at="2021-06-10T17:36:54 UTC" name="findPets" finished-at="2021-06-10T17:36:59 UTC" duration-ms="5202">
+    <test started-at="2021-06-10T17:42:39 UTC" name="findPets" finished-at="2021-06-10T17:42:46 UTC" duration-ms="6456">
       <class name="pet.tests.FindPetsTest">
-        <test-method is-config="true" signature="testSetup()[pri:0, instance:pet.tests.FindPetsTest@7966a964]" started-at="2021-06-10T17:36:54 UTC" name="testSetup" finished-at="2021-06-10T17:36:54 UTC" duration-ms="19" status="PASS">
+        <test-method is-config="true" signature="testSetup()[pri:0, instance:pet.tests.FindPetsTest@5f4f198c]" started-at="2021-06-10T17:42:39 UTC" name="testSetup" finished-at="2021-06-10T17:42:39 UTC" duration-ms="24" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSetup -->
-        <test-method signature="findPets(java.lang.String)[pri:0, instance:pet.tests.FindPetsTest@7966a964]" started-at="2021-06-10T17:36:54 UTC" name="findPets" data-provider="statusProvider" finished-at="2021-06-10T17:36:58 UTC" duration-ms="4268" status="PASS">
+        <test-method signature="findPets(java.lang.String)[pri:0, instance:pet.tests.FindPetsTest@5f4f198c]" started-at="2021-06-10T17:42:40 UTC" name="findPets" data-provider="statusProvider" finished-at="2021-06-10T17:42:45 UTC" duration-ms="5287" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- findPets -->
-        <test-method signature="findPets(java.lang.String)[pri:0, instance:pet.tests.FindPetsTest@7966a964]" started-at="2021-06-10T17:36:58 UTC" name="findPets" data-provider="statusProvider" finished-at="2021-06-10T17:36:59 UTC" duration-ms="557" status="PASS">
+        <test-method signature="findPets(java.lang.String)[pri:0, instance:pet.tests.FindPetsTest@5f4f198c]" started-at="2021-06-10T17:42:45 UTC" name="findPets" data-provider="statusProvider" finished-at="2021-06-10T17:42:46 UTC" duration-ms="768" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- findPets -->
-        <test-method signature="findPets(java.lang.String)[pri:0, instance:pet.tests.FindPetsTest@7966a964]" started-at="2021-06-10T17:36:59 UTC" name="findPets" data-provider="statusProvider" finished-at="2021-06-10T17:36:59 UTC" duration-ms="318" status="PASS">
+        <test-method signature="findPets(java.lang.String)[pri:0, instance:pet.tests.FindPetsTest@5f4f198c]" started-at="2021-06-10T17:42:46 UTC" name="findPets" data-provider="statusProvider" finished-at="2021-06-10T17:42:46 UTC" duration-ms="314" status="PASS">
           <params>
             <param index="0">
               <value>
