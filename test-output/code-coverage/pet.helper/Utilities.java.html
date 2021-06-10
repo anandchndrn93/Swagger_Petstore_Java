@@ -64,9 +64,9 @@ import org.apache.logging.log4j.Logger;
 <span class="fc" id="L64">					log.info(&quot;Current file loading : &quot; + matchineFile.getAbsolutePath());</span>
 <span class="fc" id="L65">					prop.load(new FileReader(matchineFile)); // read properties file</span>
 				}
-<span class="pc" id="L67">			} catch (IOException e) {</span>
+<span class="nc" id="L67">			} catch (IOException e) {</span>
 <span class="nc" id="L68">				e.printStackTrace();</span>
-			}
+<span class="fc" id="L69">			}</span>
 		}
 <span class="fc" id="L71">		return new HashMap(prop);</span>
 	}

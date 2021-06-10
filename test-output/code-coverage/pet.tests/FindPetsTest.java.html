@@ -63,14 +63,14 @@ import pet.modules.PetModule;
 		 */
 <span class="fc" id="L64">		long longResponseTime = petResponse.getTime();</span>
 		try {
-<span class="fc bfc" id="L66" title="All 2 branches covered.">			Assert.assertTrue(longResponseTime &lt; 3000, &quot;response took more time to complete&quot;);</span>
-<span class="fc" id="L67">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
-<span class="fc" id="L68">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
+<span class="nc" id="L67">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
+<span class="nc" id="L68">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
 <span class="fc" id="L69">		} catch (AssertionError ae) {</span>
 <span class="fc" id="L70">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
 <span class="fc" id="L71">			Listners.getReporter().log(Status.FAIL,</span>
-<span class="fc" id="L72">					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);</span>
-		}
+					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);
+<span class="nc" id="L73">		}</span>
 
 		/**
 		 * Iterating through all pets and printing the details if the pet id Lion. All
@@ -96,15 +96,15 @@ import pet.modules.PetModule;
 <span class="fc" id="L96">				intPetMatchCount++;</span>
 			}
 <span class="fc" id="L98">			intPetCount++;</span>
-		}
+<span class="fc" id="L99">		}</span>
 
 <span class="fc bfc" id="L101" title="All 2 branches covered.">		if (intPetMatchCount == 0) {</span>
 <span class="fc" id="L102">			log.info(&quot;The pet name Lion was not found for status &quot; + strStatus);</span>
 <span class="fc" id="L103">			Listners.getReporter().log(Status.INFO, &quot;The pet name Lion was not found for status &quot; + strStatus);</span>
-<span class="fc" id="L104">		} else {</span>
+		} else {
 <span class="fc" id="L105">			log.info(&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);</span>
 <span class="fc" id="L106">			Listners.getReporter().log(Status.INFO,</span>
-<span class="fc" id="L107">					&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);</span>
+					&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);
 		}
 
 		/*
