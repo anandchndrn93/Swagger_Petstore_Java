@@ -42,6 +42,8 @@ public class RequestWrapper {
 		spec = new RequestSpecBuilder().setBaseUri(getBundle().get("BASE_URI"))
 				.setBasePath(getBundle().get("BASE_PATH")).addFilter(RequestLoggingFilter.logRequestTo(logStream))
 				.setConfig(restAssuredConfig).addHeaders(headers).build();
+		// BASE_URI and BASE_PATH are read from
+		// "/src/main/resources/config/config.properties" file
 		return spec;
 	}
 

@@ -54,10 +54,11 @@ public class FindPetsTest {
 					"Response time was more than expected. Response time in milliseconds was :" + longResponseTime);
 		}
 
-// iterating through all pets and printing the details if the pet id Lion. All pet names are fetched as a list. 
+//iterating through all pets and printing the details if the pet id Lion. All pet names are fetched as a list. 
 //Then iterate through the list to find matching pet.
 //Based on the index of matching pet from the list pick other details from api response
 		List<String> listPetNames = petResponse.jsonPath().getList("category.name");
+		log.info("a total of " + listPetNames.size() + " records found for pets in status " + strStatus);
 		int intPetCount = 0;
 		int intPetMatchCount = 0;
 		for (String petname : listPetNames) {
@@ -77,8 +78,12 @@ public class FindPetsTest {
 		}
 
 		if (intPetMatchCount == 0) {
-			log.info("The pet name Lion was not found");
-			Listners.getReporter().log(Status.INFO, "The pet name Lion was not found");
+			log.info("The pet name Lion was not found for status " + strStatus);
+			Listners.getReporter().log(Status.INFO, "The pet name Lion was not found for status " + strStatus);
+		} else {
+			log.info("a total of " + intPetMatchCount + " records found for Lions in status " + strStatus);
+			Listners.getReporter().log(Status.INFO,
+					"a total of " + intPetMatchCount + " records found for Lions in status " + strStatus);
 		}
 
 //validating the header "content-type"
@@ -87,10 +92,11 @@ public class FindPetsTest {
 		log.debug("content-type header is :" + strHeader);
 		Listners.getReporter().log(Status.PASS, "content-type header is :" + strHeader);
 
-//validating the response schema. Sample schema is kept in /src/main/resources/findByStatus.json
+//validating the response schema. Sample schema is kept in "/src/main/resources/findByStatus.json"
 		petResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("findByStatus.json"));
 		log.debug("The response Json Schema is valid");
 		Listners.getReporter().log(Status.PASS, "The response Json Schema is valid");
+
 	}
 
 //data provider method to provide different status to be queried
