@@ -32,3 +32,7 @@ java and maven must be installed and added to PATH
 
 ## CI Integration
 CI integrations is done using GitHub Actions Work Flow. Every time a pull request is raised or code is merged to master the tests will be triggered and code coverage report will be generated. JoCoCo plugin is used to generate code coverage report. 
+
+## Results
+Logs can be seen in folde **/logs/**
+Test Report in **/test-output/reports/**
