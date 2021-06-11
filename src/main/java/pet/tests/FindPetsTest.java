@@ -1,7 +1,6 @@
 
 package pet.tests;
 
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeTest;
@@ -73,29 +72,27 @@ public class FindPetsTest {
 		}
 
 		/**
-		 * Iterating through all pets and printing the details if the pet id Lion. All
-		 * pet names are fetched as a list. Then iterate through the list to find
-		 * matching pet. Based on the index of matching pet from the list pick other
-		 * details from api response
+		 * Iterating through the api response and printing the details if the pet id
+		 * Lion. Iterate through the response to find matching pet. Based on the index
+		 * of matching pet pick other details from api response
 		 */
-		List<String> listPetNames = petResponse.jsonPath().getList("category.name");
-		log.info("a total of " + listPetNames.size() + " records found for pets in status " + strStatus);
-		int intPetCount = 0;
+		int petArraySize = petResponse.jsonPath().getList("$").size();
+		log.info("a total of " + petArraySize + " records found for pets in status " + strStatus);
 		int intPetMatchCount = 0;
-		for (String petname : listPetNames) {
-			if (petname.equals("Lions")) {
+		for (int intPetCount = 0; intPetCount < petArraySize; intPetCount++) {
+			String strPetname = petResponse.path("category[" + intPetCount + "].name");
+			if (strPetname.equals("Lions")) {
 				log.info(intPetCount);
 				int intCategoryId = petResponse.path("category[" + intPetCount + "].id");
 				int intId = petResponse.path("id[" + intPetCount + "]");
 				String strName = petResponse.path("name[" + intPetCount + "]");
-				log.info("pet found: " + petname);
+				log.info("pet found: " + strPetname);
 				log.info("pet category id is: " + intCategoryId);
 				log.info("pet id is: " + intId);
 				log.info("pet name is: " + strName);
 				Listners.getReporter().log(Status.INFO, "pet Lion was found with name " + strName);
 				intPetMatchCount++;
 			}
-			intPetCount++;
 		}
 
 		if (intPetMatchCount == 0) {
@@ -110,7 +107,7 @@ public class FindPetsTest {
 		/*
 		 * Validating the header "content-type"
 		 */
-		String strHeader = petResponse.getHeader("content-type");
+		String strHeader = petResponse.getContentType();
 		Assert.assertEquals(strHeader, "application/json", " Header mismatch");
 		log.debug("content-type header is :" + strHeader);
 		Listners.getReporter().log(Status.PASS, "content-type header is :" + strHeader);
