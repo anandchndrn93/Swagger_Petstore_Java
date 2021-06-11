@@ -35,13 +35,19 @@ Three test will run each making GET call to findByStatus api with querying diffe
 ## CI Integration
 CI integrations is done using GitHub Actions Work Flow. Every time a pull request is raised or code is merged to master the tests will be triggered and code coverage report will be generated. JoCoCo plugin is used to generate code coverage report.
 
-(/screen_shots_for_README_file/CI.PNG![CI](https://user-images.githubusercontent.com/76465501/121572559-f2324d80-ca41-11eb-8328-09b941472992.PNG)
+/screen_shots_for_README_file/CI.PNG![CI](https://user-images.githubusercontent.com/76465501/121572559-f2324d80-ca41-11eb-8328-09b941472992.PNG)
 
 
-/screen_shots_for_README_file/Built Success.PNG![Built Success](https://user-images.githubusercontent.com/76465501/121572834-34f42580-ca42-11eb-80c7-806b75072287.PNG)
+/screen_shots_for_README_file/Built Success.PNG![Built Success](https://user-images.githubusercontent.com/76465501/121637913-c77ae000-caa7-11eb-9af2-77e2c0b7391a.PNG)
+
 
 
 ## Results
 Logs can be seen in folde **/logs/**.
 
 Test Report in **/test-output/reports/**
+/screen_shots_for_README_file/ExtentReport1.PNG![ExtentReport1](https://user-images.githubusercontent.com/76465501/121637955-d5c8fc00-caa7-11eb-904c-9801f2ba170c.PNG)
+
+
+/screen_shots_for_README_file/ExtentReport2.PNG![ExtentReport2](https://user-images.githubusercontent.com/76465501/121638042-f42ef780-caa7-11eb-9990-898d8c993a48.PNG)
+
