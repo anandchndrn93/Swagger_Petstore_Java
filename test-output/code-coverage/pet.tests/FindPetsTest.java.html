@@ -62,10 +62,10 @@ import pet.modules.PetModule;
 		 */
 <span class="fc" id="L63">		long longResponseTime = petResponse.getTime();</span>
 		try {
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
-<span class="nc" id="L66">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
-<span class="nc" id="L67">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
-<span class="pc" id="L68">		} catch (AssertionError ae) {</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
+<span class="fc" id="L66">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
+<span class="fc" id="L67">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
+<span class="fc" id="L68">		} catch (AssertionError ae) {</span>
 <span class="fc" id="L69">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
 <span class="fc" id="L70">			Listners.getReporter().log(Status.FAIL,</span>
 <span class="fc" id="L71">					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);</span>
