@@ -1,0 +1,85 @@
+2021-06-11 06:04:19 INFO  Listners:34 - starting Test Case: findPetsByStatus-available
+2021-06-11 06:04:19 INFO  FindPetsTest:48 - fetching all pets in available status
+2021-06-11 06:04:19 INFO  RequestWrapper:71 - Performing GET on end point : pet/findByStatus
+2021-06-11 06:04:21 INFO  Utilities:64 - Current file loading : /home/runner/work/Swagger_Petstore_Java/Swagger_Petstore_Java/src/main/resources/config/config.properties
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Request method:	GET
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Request URI:	https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Proxy:			<none>
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Request params:	<none>
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Query params:	status=available
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Form params:	<none>
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Path params:	<none>
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Headers:		Accept=application/json
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - 				Content-Type=application/json; charset=UTF-8
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Cookies:		<none>
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Multiparts:		<none>
+2021-06-11 06:04:21 TRACE RequestWrapper:87 - Body:			<none>
+2021-06-11 06:04:22 DEBUG RequestWrapper:74 - Response: [{"id":2,"category":{"id":2,"name":"Cats"},"name":"Cat 2","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag2"},{"id":2,"name":"tag3"}],"status":"available"},{"id":4,"category":{"id":1,"name":"Dogs"},"name":"Dog 1","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag1"},{"id":2,"name":"tag2"}],"status":"available"},{"id":7,"category":{"id":4,"name":"Lions"},"name":"Lion 1","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag1"},{"id":2,"name":"tag2"}],"status":"available"},{"id":8,"category":{"id":4,"name":"Lions"},"name":"Lion 2","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag2"},{"id":2,"name":"tag3"}],"status":"available"},{"id":9,"category":{"id":4,"name":"Lions"},"name":"Lion 3","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag3"},{"id":2,"name":"tag4"}],"status":"available"},{"id":10,"category":{"id":1,"name":"Dogs"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"available"}]
+2021-06-11 06:04:22 DEBUG FindPetsTest:57 - status code returned is :200
+2021-06-11 06:04:22 FATAL FindPetsTest:69 - Response time was more than expected. Response time was :1033
+2021-06-11 06:04:23 INFO  FindPetsTest:80 - a total of 6 records found for pets in status available
+2021-06-11 06:04:23 INFO  FindPetsTest:85 - 2
+2021-06-11 06:04:24 INFO  FindPetsTest:89 - pet found: Lions
+2021-06-11 06:04:24 INFO  FindPetsTest:90 - pet category id is: 4
+2021-06-11 06:04:24 INFO  FindPetsTest:91 - pet id is: 7
+2021-06-11 06:04:24 INFO  FindPetsTest:92 - pet name is: Lion 1
+2021-06-11 06:04:24 INFO  FindPetsTest:85 - 3
+2021-06-11 06:04:24 INFO  FindPetsTest:89 - pet found: Lions
+2021-06-11 06:04:24 INFO  FindPetsTest:90 - pet category id is: 4
+2021-06-11 06:04:24 INFO  FindPetsTest:91 - pet id is: 8
+2021-06-11 06:04:24 INFO  FindPetsTest:92 - pet name is: Lion 2
+2021-06-11 06:04:24 INFO  FindPetsTest:85 - 4
+2021-06-11 06:04:24 INFO  FindPetsTest:89 - pet found: Lions
+2021-06-11 06:04:24 INFO  FindPetsTest:90 - pet category id is: 4
+2021-06-11 06:04:24 INFO  FindPetsTest:91 - pet id is: 9
+2021-06-11 06:04:24 INFO  FindPetsTest:92 - pet name is: Lion 3
+2021-06-11 06:04:24 INFO  FindPetsTest:102 - a total of 3 records found for Lions in status available
+2021-06-11 06:04:24 DEBUG FindPetsTest:112 - content-type header is :application/json
+2021-06-11 06:04:25 DEBUG FindPetsTest:120 - The response Json Schema is valid
+2021-06-11 06:04:25 DEBUG Listners:47 - Test Passed
+2021-06-11 06:04:25 INFO  Listners:34 - starting Test Case: findPetsByStatus-pending
+2021-06-11 06:04:25 INFO  FindPetsTest:48 - fetching all pets in pending status
+2021-06-11 06:04:25 INFO  RequestWrapper:71 - Performing GET on end point : pet/findByStatus
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Request method:	GET
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Request URI:	https://petstore3.swagger.io/api/v3/pet/findByStatus?status=pending
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Proxy:			<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Request params:	<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Query params:	status=pending
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Form params:	<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Path params:	<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Headers:		Accept=application/json
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - 				Content-Type=application/json; charset=UTF-8
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Cookies:		<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Multiparts:		<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Body:			<none>
+2021-06-11 06:04:25 DEBUG RequestWrapper:74 - Response: [{"id":3,"category":{"id":2,"name":"Cats"},"name":"Cat 3","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag3"},{"id":2,"name":"tag4"}],"status":"pending"},{"id":6,"category":{"id":1,"name":"Dogs"},"name":"Dog 3","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag3"},{"id":2,"name":"tag4"}],"status":"pending"}]
+2021-06-11 06:04:25 DEBUG FindPetsTest:57 - status code returned is :200
+2021-06-11 06:04:25 FATAL FindPetsTest:69 - Response time was more than expected. Response time was :224
+2021-06-11 06:04:25 INFO  FindPetsTest:80 - a total of 2 records found for pets in status pending
+2021-06-11 06:04:25 INFO  FindPetsTest:99 - The pet name Lion was not found for status pending
+2021-06-11 06:04:25 DEBUG FindPetsTest:112 - content-type header is :application/json
+2021-06-11 06:04:25 DEBUG FindPetsTest:120 - The response Json Schema is valid
+2021-06-11 06:04:25 DEBUG Listners:47 - Test Passed
+2021-06-11 06:04:25 INFO  Listners:34 - starting Test Case: findPetsByStatus-sold
+2021-06-11 06:04:25 INFO  FindPetsTest:48 - fetching all pets in sold status
+2021-06-11 06:04:25 INFO  RequestWrapper:71 - Performing GET on end point : pet/findByStatus
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Request method:	GET
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Request URI:	https://petstore3.swagger.io/api/v3/pet/findByStatus?status=sold
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Proxy:			<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Request params:	<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Query params:	status=sold
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Form params:	<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Path params:	<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Headers:		Accept=application/json
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - 				Content-Type=application/json; charset=UTF-8
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Cookies:		<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Multiparts:		<none>
+2021-06-11 06:04:25 TRACE RequestWrapper:87 - Body:			<none>
+2021-06-11 06:04:25 DEBUG RequestWrapper:74 - Response: [{"id":5,"category":{"id":1,"name":"Dogs"},"name":"Dog 2","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag2"},{"id":2,"name":"tag3"}],"status":"sold"}]
+2021-06-11 06:04:25 DEBUG FindPetsTest:57 - status code returned is :200
+2021-06-11 06:04:25 FATAL FindPetsTest:69 - Response time was more than expected. Response time was :211
+2021-06-11 06:04:25 INFO  FindPetsTest:80 - a total of 1 records found for pets in status sold
+2021-06-11 06:04:25 INFO  FindPetsTest:99 - The pet name Lion was not found for status sold
+2021-06-11 06:04:25 DEBUG FindPetsTest:112 - content-type header is :application/json
+2021-06-11 06:04:25 DEBUG FindPetsTest:120 - The response Json Schema is valid
+2021-06-11 06:04:25 DEBUG Listners:47 - Test Passed

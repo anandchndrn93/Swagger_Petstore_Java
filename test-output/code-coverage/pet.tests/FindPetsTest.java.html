@@ -41,7 +41,7 @@ import pet.modules.PetModule;
 	 * @param strStatus status of pet to be passed as query param to fidByStatus API
 	 */
 	@Test(dataProvider = &quot;statusProvider&quot;)
-	public void findPets(String strStatus) {
+	public void findPetsByStatus(String strStatus) {
 		/*
 		 * Get all pets based on different status
 		 */
@@ -62,14 +62,14 @@ import pet.modules.PetModule;
 		 */
 <span class="fc" id="L63">		long longResponseTime = petResponse.getTime();</span>
 		try {
-<span class="fc bfc" id="L65" title="All 2 branches covered.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
-<span class="fc" id="L66">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
-<span class="fc" id="L67">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
-<span class="fc" id="L68">		} catch (AssertionError ae) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
+<span class="nc" id="L66">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
+<span class="nc" id="L67">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
+<span class="pc" id="L68">		} catch (AssertionError ae) {</span>
 <span class="fc" id="L69">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
 <span class="fc" id="L70">			Listners.getReporter().log(Status.FAIL,</span>
-					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);
-<span class="fc" id="L72">		}</span>
+<span class="fc" id="L71">					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);</span>
+		}
 
 		/**
 		 * Iterating through the api response and printing the details if the pet id
@@ -98,10 +98,10 @@ import pet.modules.PetModule;
 <span class="fc bfc" id="L98" title="All 2 branches covered.">		if (intPetMatchCount == 0) {</span>
 <span class="fc" id="L99">			log.info(&quot;The pet name Lion was not found for status &quot; + strStatus);</span>
 <span class="fc" id="L100">			Listners.getReporter().log(Status.INFO, &quot;The pet name Lion was not found for status &quot; + strStatus);</span>
-		} else {
+<span class="fc" id="L101">		} else {</span>
 <span class="fc" id="L102">			log.info(&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);</span>
 <span class="fc" id="L103">			Listners.getReporter().log(Status.INFO,</span>
-					&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);
+<span class="fc" id="L104">					&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);</span>
 		}
 
 		/*
