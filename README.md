@@ -46,6 +46,7 @@ CI integrations is done using GitHub Actions Work Flow. Every time a pull reques
 Logs can be seen in folde **/logs/**.
 
 Test Report in **/test-output/reports/**
+
 /screen_shots_for_README_file/ExtentReport1.PNG![ExtentReport1](https://user-images.githubusercontent.com/76465501/121637955-d5c8fc00-caa7-11eb-904c-9801f2ba170c.PNG)
 
 

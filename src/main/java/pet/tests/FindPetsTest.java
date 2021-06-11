@@ -41,7 +41,7 @@ public class FindPetsTest {
 	 * @param strStatus status of pet to be passed as query param to fidByStatus API
 	 */
 	@Test(dataProvider = "statusProvider")
-	public void findPets(String strStatus) {
+	public void findPetsByStatus(String strStatus) {
 		/*
 		 * Get all pets based on different status
 		 */
