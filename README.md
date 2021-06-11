@@ -1,13 +1,13 @@
 # Swagger_Petstore_Java  ![Coverage](.github/badges/jacoco.svg)
-
+I have created this project cosidering the possibility of addition of more apis and validations. So I have taken a modular approch where the entire program is split into different classes and packages to make any addition of new code easier.
 ## Scenarios Covered
 
-1. Do a GET request to the /pet/findByStatus endpoint
+1. Do a GET request to the /pet/findByStatus endpoint. Query all valid status(available, pending, sold)
 2. Validate the response code to be 200
 3. Validate the response time to be less than 200 ms
 4. Iterate over all elements of the json response body and print out all pets that are Lions.
 5. Validate content-type header
-6. Validate Json Schema
+6. Validate api response Schema. A Json Schema file is added - **/src/main/resources/findByStatus.json**
 
 ### **additionally**
 
