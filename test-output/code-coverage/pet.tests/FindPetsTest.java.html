@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FindPetsTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Take_Home_Test</a> &gt; <a href="index.source.html" class="el_package">pet.tests</a> &gt; <span class="el_source">FindPetsTest.java</span></div><h1>FindPetsTest.java</h1><pre class="source lang-java linenums">
 package pet.tests;
 
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeTest;
@@ -20,21 +19,21 @@ import pet.modules.PetModule;
  * 
  * @author Anand Chandran
  */
-<span class="fc" id="L23">public class FindPetsTest {</span>
+<span class="fc" id="L22">public class FindPetsTest {</span>
 
 	private PetModule pet;
 	/**
 	 * Logger object to add logs
 	 */
-<span class="fc" id="L29">	private static Logger log = LogManager.getLogger(FindPetsTest.class.getName());</span>
+<span class="fc" id="L28">	private static Logger log = LogManager.getLogger(FindPetsTest.class.getName());</span>
 
 	/**
 	 * Method to run before a test. initialize instance of PetModule class
 	 */
 	@BeforeTest(alwaysRun = true)
 	public void testSetup() {
-<span class="fc" id="L36">		pet = new PetModule();</span>
-<span class="fc" id="L37">	}</span>
+<span class="fc" id="L35">		pet = new PetModule();</span>
+<span class="fc" id="L36">	}</span>
 
 	/**
 	 * Test Method for findByStatus API.
@@ -46,88 +45,82 @@ import pet.modules.PetModule;
 		/*
 		 * Get all pets based on different status
 		 */
-<span class="fc" id="L49">		log.info(&quot;fetching all pets in &quot; + strStatus + &quot; status&quot;);</span>
-<span class="fc" id="L50">		Listners.getReporter().log(Status.INFO, &quot;fetching all pets in pending status&quot;);</span>
-<span class="fc" id="L51">		Response petResponse = pet.getPetsByStatus(strStatus); // This is the api call</span>
+<span class="fc" id="L48">		log.info(&quot;fetching all pets in &quot; + strStatus + &quot; status&quot;);</span>
+<span class="fc" id="L49">		Listners.getReporter().log(Status.INFO, &quot;fetching all pets in pending status&quot;);</span>
+<span class="fc" id="L50">		Response petResponse = pet.getPetsByStatus(strStatus); // This is the api call</span>
 
 		/*
 		 * Validating if the response code is 200
 		 */
-<span class="fc" id="L56">		int intStatusCode = petResponse.getStatusCode();</span>
-<span class="fc" id="L57">		Assert.assertEquals(intStatusCode, 200, &quot; Status code mismatch&quot;);</span>
-<span class="fc" id="L58">		log.debug(&quot;status code returned is :&quot; + intStatusCode);</span>
-<span class="fc" id="L59">		Listners.getReporter().log(Status.PASS, &quot;status code returned is :&quot; + intStatusCode);</span>
+<span class="fc" id="L55">		int intStatusCode = petResponse.getStatusCode();</span>
+<span class="fc" id="L56">		Assert.assertEquals(intStatusCode, 200, &quot; Status code mismatch&quot;);</span>
+<span class="fc" id="L57">		log.debug(&quot;status code returned is :&quot; + intStatusCode);</span>
+<span class="fc" id="L58">		Listners.getReporter().log(Status.PASS, &quot;status code returned is :&quot; + intStatusCode);</span>
 
 		/*
 		 * Validating if the response time is less than 200 ms
 		 */
-<span class="fc" id="L64">		long longResponseTime = petResponse.getTime();</span>
+<span class="fc" id="L63">		long longResponseTime = petResponse.getTime();</span>
 		try {
-<span class="pc bpc" id="L66" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
-<span class="nc" id="L67">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
-<span class="nc" id="L68">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
-<span class="fc" id="L69">		} catch (AssertionError ae) {</span>
-<span class="fc" id="L70">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
-<span class="fc" id="L71">			Listners.getReporter().log(Status.FAIL,</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			Assert.assertTrue(longResponseTime &lt; 200, &quot;response took more time to complete&quot;);</span>
+<span class="nc" id="L66">			log.debug(&quot;response time was :&quot; + longResponseTime);</span>
+<span class="nc" id="L67">			Listners.getReporter().log(Status.PASS, &quot;response time was :&quot; + longResponseTime);</span>
+<span class="fc" id="L68">		} catch (AssertionError ae) {</span>
+<span class="fc" id="L69">			log.fatal(&quot;Response time was more than expected. Response time was :&quot; + longResponseTime);</span>
+<span class="fc" id="L70">			Listners.getReporter().log(Status.FAIL,</span>
 					&quot;Response time was more than expected. Response time in milliseconds was :&quot; + longResponseTime);
-<span class="nc" id="L73">		}</span>
+<span class="nc" id="L72">		}</span>
 
 		/**
-		 * Iterating through all pets and printing the details if the pet id Lion. All
-		 * pet names are fetched as a list. Then iterate through the list to find
-		 * matching pet. Based on the index of matching pet from the list pick other
-		 * details from api response
+		 * Iterating through the api response and printing the details if the pet id
+		 * Lion. Iterate through the response to find matching pet. Based on the index
+		 * of matching pet pick other details from api response
 		 */
-//		List&lt;String&gt; listPetNames = petResponse.jsonPath().getList(&quot;category.name&quot;);
-<span class="fc" id="L82">		int petArraySize = petResponse.jsonPath().getList(&quot;$&quot;).size();</span>
-<span class="fc" id="L83">		log.info(&quot;a total of &quot; + petArraySize + &quot; records found for pets in status &quot; + strStatus);</span>
-//		int intPetCount = 0;
-<span class="fc" id="L85">		int intPetMatchCount = 0;</span>
-//		for (String petname : listPetNames) {
-<span class="fc bfc" id="L87" title="All 2 branches covered.">		for (int intPetCount = 0; intPetCount &lt; petArraySize; intPetCount++) {</span>
-<span class="fc" id="L88">			String strPetname = petResponse.path(&quot;category[&quot; + intPetCount + &quot;].name&quot;);</span>
-<span class="fc bfc" id="L89" title="All 2 branches covered.">			if (strPetname.equals(&quot;Lions&quot;)) {</span>
-<span class="fc" id="L90">				log.info(intPetCount);</span>
-<span class="fc" id="L91">				int intCategoryId = petResponse.path(&quot;category[&quot; + intPetCount + &quot;].id&quot;);</span>
-<span class="fc" id="L92">				int intId = petResponse.path(&quot;id[&quot; + intPetCount + &quot;]&quot;);</span>
-<span class="fc" id="L93">				String strName = petResponse.path(&quot;name[&quot; + intPetCount + &quot;]&quot;);</span>
-<span class="fc" id="L94">				log.info(&quot;pet found: &quot; + strPetname);</span>
-<span class="fc" id="L95">				log.info(&quot;pet category id is: &quot; + intCategoryId);</span>
-<span class="fc" id="L96">				log.info(&quot;pet id is: &quot; + intId);</span>
-<span class="fc" id="L97">				log.info(&quot;pet name is: &quot; + strName);</span>
-<span class="fc" id="L98">				Listners.getReporter().log(Status.INFO, &quot;pet Lion was found with name &quot; + strName);</span>
-<span class="fc" id="L99">				intPetMatchCount++;</span>
+<span class="fc" id="L79">		int petArraySize = petResponse.jsonPath().getList(&quot;$&quot;).size();</span>
+<span class="fc" id="L80">		log.info(&quot;a total of &quot; + petArraySize + &quot; records found for pets in status &quot; + strStatus);</span>
+<span class="fc" id="L81">		int intPetMatchCount = 0;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		for (int intPetCount = 0; intPetCount &lt; petArraySize; intPetCount++) {</span>
+<span class="fc" id="L83">			String strPetname = petResponse.path(&quot;category[&quot; + intPetCount + &quot;].name&quot;);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">			if (strPetname.equals(&quot;Lions&quot;)) {</span>
+<span class="fc" id="L85">				log.info(intPetCount);</span>
+<span class="fc" id="L86">				int intCategoryId = petResponse.path(&quot;category[&quot; + intPetCount + &quot;].id&quot;);</span>
+<span class="fc" id="L87">				int intId = petResponse.path(&quot;id[&quot; + intPetCount + &quot;]&quot;);</span>
+<span class="fc" id="L88">				String strName = petResponse.path(&quot;name[&quot; + intPetCount + &quot;]&quot;);</span>
+<span class="fc" id="L89">				log.info(&quot;pet found: &quot; + strPetname);</span>
+<span class="fc" id="L90">				log.info(&quot;pet category id is: &quot; + intCategoryId);</span>
+<span class="fc" id="L91">				log.info(&quot;pet id is: &quot; + intId);</span>
+<span class="fc" id="L92">				log.info(&quot;pet name is: &quot; + strName);</span>
+<span class="fc" id="L93">				Listners.getReporter().log(Status.INFO, &quot;pet Lion was found with name &quot; + strName);</span>
+<span class="fc" id="L94">				intPetMatchCount++;</span>
 			}
-//			intPetCount++;
 		}
 
-<span class="fc bfc" id="L104" title="All 2 branches covered.">		if (intPetMatchCount == 0) {</span>
-<span class="fc" id="L105">			log.info(&quot;The pet name Lion was not found for status &quot; + strStatus);</span>
-<span class="fc" id="L106">			Listners.getReporter().log(Status.INFO, &quot;The pet name Lion was not found for status &quot; + strStatus);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		if (intPetMatchCount == 0) {</span>
+<span class="fc" id="L99">			log.info(&quot;The pet name Lion was not found for status &quot; + strStatus);</span>
+<span class="fc" id="L100">			Listners.getReporter().log(Status.INFO, &quot;The pet name Lion was not found for status &quot; + strStatus);</span>
 		} else {
-<span class="fc" id="L108">			log.info(&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);</span>
-<span class="fc" id="L109">			Listners.getReporter().log(Status.INFO,</span>
+<span class="fc" id="L102">			log.info(&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);</span>
+<span class="fc" id="L103">			Listners.getReporter().log(Status.INFO,</span>
 					&quot;a total of &quot; + intPetMatchCount + &quot; records found for Lions in status &quot; + strStatus);
 		}
 
 		/*
 		 * Validating the header &quot;content-type&quot;
 		 */
-//		String strHeader = petResponse.getHeader(&quot;content-type&quot;);
-<span class="fc" id="L117">		String strHeader = petResponse.getContentType();</span>
-<span class="fc" id="L118">		Assert.assertEquals(strHeader, &quot;application/json&quot;, &quot; Header mismatch&quot;);</span>
-<span class="fc" id="L119">		log.debug(&quot;content-type header is :&quot; + strHeader);</span>
-<span class="fc" id="L120">		Listners.getReporter().log(Status.PASS, &quot;content-type header is :&quot; + strHeader);</span>
+<span class="fc" id="L110">		String strHeader = petResponse.getContentType();</span>
+<span class="fc" id="L111">		Assert.assertEquals(strHeader, &quot;application/json&quot;, &quot; Header mismatch&quot;);</span>
+<span class="fc" id="L112">		log.debug(&quot;content-type header is :&quot; + strHeader);</span>
+<span class="fc" id="L113">		Listners.getReporter().log(Status.PASS, &quot;content-type header is :&quot; + strHeader);</span>
 
 		/*
 		 * validating the response schema. Sample schema is kept in
 		 * &quot;/src/main/resources/findByStatus.json&quot;
 		 */
-<span class="fc" id="L126">		petResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(&quot;findByStatus.json&quot;));</span>
-<span class="fc" id="L127">		log.debug(&quot;The response Json Schema is valid&quot;);</span>
-<span class="fc" id="L128">		Listners.getReporter().log(Status.PASS, &quot;The response Json Schema is valid&quot;);</span>
+<span class="fc" id="L119">		petResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(&quot;findByStatus.json&quot;));</span>
+<span class="fc" id="L120">		log.debug(&quot;The response Json Schema is valid&quot;);</span>
+<span class="fc" id="L121">		Listners.getReporter().log(Status.PASS, &quot;The response Json Schema is valid&quot;);</span>
 
-<span class="fc" id="L130">	}</span>
+<span class="fc" id="L123">	}</span>
 
 	/**
 	 * Data provider method to provide different status to be queried
@@ -138,11 +131,11 @@ import pet.modules.PetModule;
 	@DataProvider
 	public String[] statusProvider() {
 
-<span class="fc" id="L141">		String[] testStatusArray = new String[3];</span>
-<span class="fc" id="L142">		testStatusArray[0] = &quot;available&quot;;</span>
-<span class="fc" id="L143">		testStatusArray[1] = &quot;pending&quot;;</span>
-<span class="fc" id="L144">		testStatusArray[2] = &quot;sold&quot;;</span>
-<span class="fc" id="L145">		return testStatusArray;</span>
+<span class="fc" id="L134">		String[] testStatusArray = new String[3];</span>
+<span class="fc" id="L135">		testStatusArray[0] = &quot;available&quot;;</span>
+<span class="fc" id="L136">		testStatusArray[1] = &quot;pending&quot;;</span>
+<span class="fc" id="L137">		testStatusArray[2] = &quot;sold&quot;;</span>
+<span class="fc" id="L138">		return testStatusArray;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
