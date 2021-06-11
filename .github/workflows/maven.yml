@@ -21,10 +21,8 @@ jobs:
       -  name: Build with Maven
          run: mvn test
       -  name: Publish Test Results
-         uses: EnricoMi/publish-unit-test-result-action@v1
-         if: always()
-         with:
-            files: test-output/testng-results.xml
+         if: ${{ always() }}
+         uses: scacap/action-surefire-report@v1
       -  name: Generate JaCoCo Badge
          id: jacoco
          uses: cicirello/jacoco-badge-generator@v2
